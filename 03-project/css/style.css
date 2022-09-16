@@ -1,0 +1,158 @@
+body {
+    background-color: black;
+    font-family: sans-serif;    
+    color: white;
+}
+
+.container-one {    
+    margin: 30px auto;        
+    border-top: 1px solid #333;    
+}
+
+nav {    
+    display: flex;
+    justify-content: space-between;    
+    text-transform: uppercase;
+    width: 1000px;
+    margin: 0 auto;    
+}
+
+h1 {
+    font-size: 30px;
+    border-top: 2px solid #e62948;
+    font-weight: bold;    
+    padding-top: 10px;
+}
+
+span {
+    color: #e62948;
+}
+
+.nav-flex {
+    display: flex;
+    justify-content: space-between;
+    flex: 0.7;
+    align-items: center;
+}
+
+.container-two {
+    background-image: url("../img/fundo.jpg");
+    background-size: cover;
+    background-attachment: fixed;    
+    display: flex;
+}
+
+.container-color {
+    background-color: #0a0a0afb;
+    width: 1000px;
+    margin: 50px auto;
+    padding: 15px;
+}
+
+.banner {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.banner img {
+    width: 100%;
+}
+
+h2 {
+    position: absolute;
+    top: 220px;
+    left: 30px;
+    font-size: 40px;
+    text-transform: uppercase;
+    border-left: 3px solid #e62948;
+    padding: 10px;
+    background-color: rgba(0,0,0, 0.5);
+}
+
+h3 {
+    border-left: 8px solid #e62948;
+    padding: 5px 5px 5px 15px;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.albuns-margin {
+    margin-bottom: 15px;
+}
+
+.albuns {
+    display: flex;    
+    flex-wrap: wrap;
+    justify-content: space-between;    
+}
+
+.img-album {
+    margin-bottom: 10px;
+}
+
+.img-album img {
+    width: 230px;
+}
+
+.events-container {
+    display: flex;
+}
+
+.events {
+    display: flex;
+    width: 70%;
+
+}
+
+.new-events {
+    display: flex;
+    border-bottom: 1px solid #161616;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.date {
+    margin: 10px;    
+}
+
+.day {    
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 5px;    
+}
+
+.month {
+    color:  #606060;
+    font-size: 15px;
+}
+
+.local {
+    margin: 10px;    
+    font-size: 15px;
+}
+
+.local-title {
+    color: #e62948;
+    margin-bottom: 5px;
+}
+
+.container-noticias {
+    display: flex;
+    margin-bottom: 25px;    
+}
+
+.container-noticias img {
+    padding-right: 20px;
+}
+
+.container-noticias h4 {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.container-noticias p {
+    color:  #888;
+    text-align: justify;
+}

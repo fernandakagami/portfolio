@@ -1,0 +1,100 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+}
+
+header {   
+    width: 1000px;   
+    margin: 20px auto 80px; 
+}
+
+nav {    
+    display: flex;    
+    justify-content: space-between;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    flex: 0.3;    
+    align-items: flex-end;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: bold;   
+}
+
+a {
+    text-decoration: none;
+}
+
+main {
+    margin-bottom: 50px;
+}
+
+.containerone {
+    display: flex;
+    width: 1000px;  
+    margin: 20px auto 40px;    
+}
+
+.blockone {
+    width: 50%;
+    margin: 20px 50px 15px 0;
+}
+
+.blockone h2 {
+    font-size: 45px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.blockone p {
+    text-align: justify;
+    font-size: 18px;
+}
+
+.containerone img {
+    width: 50%;
+}
+
+.containertwo {
+    background-image: url(../img/mask.jpg);
+    background-size: cover; 
+    padding: 100px 0;    
+}
+
+.containertwomargin {
+    width: 1000px; 
+    margin: 0 auto;
+}
+
+.blocktwo {
+    background-color: white;
+    color: black;
+    padding: 40px;
+    width: 50%;    
+}
+
+.blocktwo h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.blocktwo p {
+    text-align: justify;
+}
+
+footer {
+    width: 1000px;
+    margin: 0 auto 40px;
+}
+
+small {
+    display: block;
+    text-align: center;
+    font-size: 15px;    
+}

@@ -1,0 +1,121 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1c819b;     
+}
+
+.site-largura {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.espaco-nav {
+    margin: 15px 0;
+}
+
+nav {
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+a {
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-right: 20px ;
+}
+
+.form-background {
+    background: #1c819b;
+    padding: 20px 0;
+}
+
+input {
+    width: 100%;
+    font-size: 18px;
+    padding: 5px 10px;
+    border-top: 2px solid black;
+    border-radius: 5px;
+}
+
+.texto {
+    width: 100%;
+    padding: 50px 95px;
+    background: #20b7dd;  
+    margin-bottom: 30px;  
+}
+
+h1 {
+    font-size: 60px;
+    margin-bottom: 50px;
+    color: white;    
+    text-shadow: 0.08em 0.08em 0.0em rgba(5, 48, 77, 0.531)
+}
+
+.texto p {
+    color: white;
+    font-size: 20px;    
+    line-height: 30px;
+    text-align: justify;
+}
+
+.space-botton {
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+
+.bloco-conteudo {
+    width: 50%;
+    float: left;
+    overflow: hidden; 
+    margin-bottom: 2em;   
+    padding-left: 2em;
+    color: black;
+}
+
+img {
+    float: left;
+    width: 15%;     
+    margin-right: 15px;       
+}
+
+.bloco-texto {
+    float: left;
+    width: 75%;    
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 10px;    
+}
+
+main p {
+    font-size: 14px;
+    text-align: justify;    
+}
+
+footer {
+    padding: 20px 0;
+    border-top: 1px solid #BBBBBB;
+    font-size: 13px; 
+    color: black;       
+}
+
+footer div {
+    overflow: hidden;
+}
+
+.direitos {
+    width: 50%;
+    float: left;
+}
+
+.icones {
+    width: 50%;
+    float: left;
+    text-align: right;
+}
+
+
