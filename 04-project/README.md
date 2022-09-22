@@ -1,1 +1,0 @@
-# Spider-Man Multiverse Landing Page
