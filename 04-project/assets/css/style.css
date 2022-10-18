@@ -75,8 +75,9 @@ img {
     margin: 20px 0;    
 }
 
-i {
+.check-button {
     padding-right: 10px;
+    font-size: 25px;
 }
 
 p {
