@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to-do list</title>
+
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6e608c3e94.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <main class="background-container">
+        <div class="container">
+            <div class="header-container">
+                <div class="title-container">
+                    <h1 class="title">To do list</h1>              
+                    <img src="assets/images/bubble-tea.png" alt="bubble-tea">
+                </div>                
+                <div class="add-do">
+                    <form action="" class="add" id="newItem">                
+                        <input type="text" name="name" id="name">                
+                        <input type="submit" value="Add Task" class="register" id="register">
+                    </form>   
+                </div>                            
+            </div>
+    
+            <div class="list-container">
+                <ul class="list" id="list">
+                    <li class="task">
+                        <i class="fa-regular fa-square"></i>
+                        <p>ler</p>
+                    </li>
+                    <li class="task">
+                        <i class="fa-regular fa-square-check"></i>
+                        <p>clean</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
