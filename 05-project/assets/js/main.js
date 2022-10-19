@@ -4,6 +4,7 @@ const numberButtons = document.querySelectorAll('[data-number]');
 const operationButtons = document.querySelectorAll('[data-operation]');
 const equalsButton = document.querySelector('[data-equal]');
 const deleteButton = document.querySelector('[data-delete]');
+const displayResult = document.querySelector(".display-result");
 let number1 = 0;
 let number2 = 0;
 let operator = 0;
@@ -26,8 +27,6 @@ operationButtons.forEach(operation => {
         }        
     });
 });
-
-const displayResult = document.querySelector(".display-result");
 
 equalsButton.addEventListener('click', () => {
     switch (operator) {        
