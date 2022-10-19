@@ -18,6 +18,42 @@ form.addEventListener('submit', (event) => {
 
         storage(event.target.elements['name'].value);
 
+        checks = document.querySelectorAll(".check-button");
+
+        for (let index = 0; index < checks.length; index++) {
+            checks[index].addEventListener('click', () => {    
+                if (!itens[index].checked) {
+                    checks[index].classList.remove('fa-square');
+                    checks[index].classList.add('fa-square-check');        
+            
+                    itens[index].checked = true;     
+                    localStorage.setItem("itens", JSON.stringify(itens)); 
+                } else {
+                    checks[index].classList.add('fa-square');
+                    checks[index].classList.remove('fa-square-check');        
+            
+                    itens[index].checked = false;     
+                    localStorage.setItem("itens", JSON.stringify(itens)); 
+                }
+                            
+            });        
+        };
+
+        deleteButton = document.querySelectorAll(".delete-button");
+
+        for (let index = 0; index < deleteButton.length; index++) {
+            deleteButton[index].addEventListener('click', () => {                
+                deleteButton[index].parentElement.remove();   
+
+                itens.splice(index, (++index));
+                localStorage.setItem("itens", JSON.stringify(itens));  
+            });        
+        };
+        
+
+        // adicionar o evento no novo checkbox e no novo botão de deletar
+        // procurar nos filhos do formulário pelo nome da classe, pega só o último, pq vai ser o que vc acabou de incluir
+
         event.target.elements['name'].value = '';
     } else {
         event.target.elements['name'].value = '';
@@ -52,22 +88,30 @@ function storage(name, checked = false) {
 
 // check box
 
-const checks = document.querySelectorAll(".check-button");
+let checks = document.querySelectorAll(".check-button");
 
 for (let index = 0; index < checks.length; index++) {
-    checks[index].addEventListener('click', () => {                
-        checks[index].classList.remove('fa-square');
-        checks[index].classList.add('fa-square-check');        
-
-        itens[index].checked = true;     
-        localStorage.setItem("itens", JSON.stringify(itens));             
+    checks[index].addEventListener('click', () => {    
+        if (!itens[index].checked) {
+            checks[index].classList.remove('fa-square');
+            checks[index].classList.add('fa-square-check');        
+    
+            itens[index].checked = true;     
+            localStorage.setItem("itens", JSON.stringify(itens)); 
+        } else {
+            checks[index].classList.add('fa-square');
+            checks[index].classList.remove('fa-square-check');        
+    
+            itens[index].checked = false;     
+            localStorage.setItem("itens", JSON.stringify(itens)); 
+        }
+                    
     });        
 };
 
-
 // delete button
 
-const deleteButton = document.querySelectorAll(".delete-button");
+let deleteButton = document.querySelectorAll(".delete-button");
 
 for (let index = 0; index < deleteButton.length; index++) {
     deleteButton[index].addEventListener('click', () => {                
