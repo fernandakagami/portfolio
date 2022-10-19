@@ -1,20 +1,61 @@
 const keys = document.querySelectorAll(".key");
 
-for (let index = 0; index < keys.length; index++) {
-    keys[index].addEventListener("click", () => {
+const numberButtons = document.querySelectorAll('[data-number]');
+const operationButtons = document.querySelectorAll('[data-operation]');
+const equalsButton = document.querySelector('[data-equal]');
+const deleteButton = document.querySelector('[data-delete]');
+let number1 = 0;
+let number2 = 0;
+let operator = 0;
 
-        buttonInnerHTML = keys[index].innerHTML;
-
-        console.log(buttonInnerHTML);
-
-        // show the input in screen
-        const result = document.querySelector(".result");
-        result.innerHTML = buttonInnerHTML;
-
+numberButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        number1 = number2;
+        number2 = button.innerHTML;
+        displayResult.innerHTML = number2;     
     });    
-}
+});
 
-function calc (num1, operator, num2) {
+operationButtons.forEach(operation => {
+    operation.addEventListener('click', () => {        
+        if (number2 === 0) {
+            displayResult.innerHTML = 'error';        
+        } else {
+            operator = operation.innerHTML;    
+            displayResult.innerHTML = operator;    
+        }        
+    });
+});
 
-}
+const displayResult = document.querySelector(".display-result");
 
+equalsButton.addEventListener('click', () => {
+    switch (operator) {        
+        case '+':
+            displayResult.innerHTML = parseInt(number1) + parseInt(number2);  
+            number1 = 0;
+            number2 = 0;
+            break
+        case '-':
+            displayResult.innerHTML = parseInt(number1) - parseInt(number2);
+            number1 = 0;
+            number2 = 0;
+            break
+        case 'x':
+            displayResult.innerHTML = parseInt(number1) * parseInt(number2);
+            number1 = 0;
+            number2 = 0;
+            break
+        case '/':
+            displayResult.innerHTML = number1 / number2;
+            number1 = 0;
+            number2 = 0;
+            break
+        default: result = 'error';            
+            return
+      }
+});
+
+deleteButton.addEventListener('click', () => {        
+    displayResult.innerHTML = 0; 
+});

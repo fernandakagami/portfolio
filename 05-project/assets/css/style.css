@@ -1,5 +1,6 @@
 body {
-    background-color: rgb(0, 0, 31);      
+    background-color: rgb(0, 0, 31);
+    height: 100vh;      
 }    
   
 .container {        
@@ -20,7 +21,7 @@ body {
     box-shadow: inset 2px 3px #222222;
 }
 
-.result {
+.display-result {
     font-size: 50px;
     text-align: end;
 }
