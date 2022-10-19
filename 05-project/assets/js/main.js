@@ -19,7 +19,7 @@ numberButtons.forEach(button => {
 
 operationButtons.forEach(operation => {
     operation.addEventListener('click', () => {        
-        if (number2 === 0) {
+        if (number2 === 0 || (number1 === 0 && operator != 0)) {
             displayResult.innerHTML = 'error';        
         } else {
             operator = operation.innerHTML;    
@@ -34,27 +34,37 @@ equalsButton.addEventListener('click', () => {
             displayResult.innerHTML = parseInt(number1) + parseInt(number2);  
             number1 = 0;
             number2 = 0;
+            operator = 0;
             break
         case '-':
             displayResult.innerHTML = parseInt(number1) - parseInt(number2);
             number1 = 0;
             number2 = 0;
+            operator = 0;
             break
         case 'x':
             displayResult.innerHTML = parseInt(number1) * parseInt(number2);
             number1 = 0;
             number2 = 0;
+            operator = 0;
             break
         case '/':
             displayResult.innerHTML = number1 / number2;
             number1 = 0;
             number2 = 0;
+            operator = 0;
             break
-        default: result = 'error';            
+        default: result = 'error'; 
+            number1 = 0;
+            number2 = 0;
+            operator = 0;           
             return
       }
 });
 
-deleteButton.addEventListener('click', () => {        
+deleteButton.addEventListener('click', () => {    
+    number1 = 0;
+    number2 = 0;
+    operator = 0;          
     displayResult.innerHTML = 0; 
 });
