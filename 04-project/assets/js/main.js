@@ -1,4 +1,5 @@
 const form = document.getElementById('newItem');
+const inputName = document.getElementById('name');
 const list = document.getElementById("list"); 
 const itens = JSON.parse(localStorage.getItem("itens")) || [];
 
@@ -9,21 +10,13 @@ itens.forEach(element => {
 form.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const taskName = event.target.elements['name'].value;
+    const taskName = inputName.value;
 
     if (taskName != '') {
         createTask(taskName, false);
-
-        storage(taskName, false);
-
-            // adicionar o evento no novo checkbox e no novo botão de deletar
-        // procurar nos filhos do formulário pelo nome da classe, pega só o último, pq vai ser o que vc acabou de incluir
-
-    event.target.elements['name'].value = '';
-    } else {
-    event.target.elements['name'].value = '';
+        saveTasksToStorage();
+        inputName.value = '';
     }
-    
 });
 
 function createTask(name, checked) {
@@ -47,46 +40,33 @@ function createTask(name, checked) {
     li.appendChild(taskDescription);
     taskDescription.appendChild(taskName);
     li.appendChild(deleteButton);
-    list.appendChild(li);      
+    list.appendChild(li);
     
-    checkButton.addEventListener('click', () => {    
-        if (!checked) {
+    checkButton.addEventListener('click', () => {
+        if (checkButton.classList.contains('fa-square')) {
             checkButton.classList.remove('fa-square');
             checkButton.classList.add('fa-square-check');
-            
-            itens[itens.length-1].checked = true;     
-            localStorage.setItem("itens", JSON.stringify(itens)); 
         } else {
             checkButton.classList.add('fa-square');
-            checkButton.classList.remove('fa-square-check');        
-    
-            itens[itens.length-1].checked = false;     
-            localStorage.setItem("itens", JSON.stringify(itens)); 
+            checkButton.classList.remove('fa-square-check');
         }
+        saveTasksToStorage();
     });
 
     deleteButton.addEventListener('click', () => {                
-        deleteButton.parentElement.remove();   
-
-        itens.splice(itens.length-1, itens.length);
-        localStorage.setItem("itens", JSON.stringify(itens));  
+        li.remove();
+        saveTasksToStorage();
     });        
-
 }
 
-function storage(name, checked) {
-    const currentItem = {
-        "name": name,
-        "checked": checked
-    }
-
-    itens.push(currentItem);
-    localStorage.setItem("itens", JSON.stringify(itens));
+function saveTasksToStorage() {
+    let tasks = [];
+    document.querySelectorAll('.task').forEach( taskHtml => {
+        tasks.push({
+            "name": taskHtml.getElementsByClassName("task-description")[0].innerHTML,
+            "checked": taskHtml.getElementsByClassName("fa-square-check").length === 1 ? true : false
+        })
+    });
+    localStorage.setItem("itens", JSON.stringify(tasks));
 }
-
-// check box
-
-// delete button
-
-
 
