@@ -16,36 +16,14 @@ form.addEventListener('submit', (event) => {
 
         storage(taskName, false);
 
-        console.log(event);
-
-        const listOfLi = document.querySelector(".list");
-
-        console.log(listOfLi.lastChild);
-    
-        listOfLi.addEventListener('click', () => {    
-                if () {
-                    lastItemChecked[index].classList.remove('fa-square');
-                    lastItemChecked[index].classList.add('fa-square-check');        
-            
-                    itens[index].checked = true;     
-                    localStorage.setItem("itens", JSON.stringify(itens)); 
-                } else {
-                    lastItemChecked[index].classList.add('fa-square');
-                    lastItemChecked[index].classList.remove('fa-square-check');        
-            
-                    itens[index].checked = false;     
-                    localStorage.setItem("itens", JSON.stringify(itens)); 
-                }
-                            
-            });    
-        }
             // adicionar o evento no novo checkbox e no novo botão de deletar
         // procurar nos filhos do formulário pelo nome da classe, pega só o último, pq vai ser o que vc acabou de incluir
 
-        event.target.elements['name'].value = '';
-    //} else {
-        event.target.elements['name'].value = '';
+    event.target.elements['name'].value = '';
+    } else {
+    event.target.elements['name'].value = '';
     }
+    
 });
 
 function createTask(name, checked) {
@@ -69,7 +47,31 @@ function createTask(name, checked) {
     li.appendChild(taskDescription);
     taskDescription.appendChild(taskName);
     li.appendChild(deleteButton);
-    list.appendChild(li);        
+    list.appendChild(li);      
+    
+    checkButton.addEventListener('click', () => {    
+        if (!checked) {
+            checkButton.classList.remove('fa-square');
+            checkButton.classList.add('fa-square-check');        
+    
+            itens[index].checked = true;     
+            localStorage.setItem("itens", JSON.stringify(itens)); 
+        } else {
+            checkButton.classList.add('fa-square');
+            checkButton.classList.remove('fa-square-check');        
+    
+            itens[index].checked = false;     
+            localStorage.setItem("itens", JSON.stringify(itens)); 
+        }
+    });
+
+    deleteButton.addEventListener('click', () => {                
+        deleteButton.parentElement.remove();   
+
+        itens.splice(index, (++index));
+        localStorage.setItem("itens", JSON.stringify(itens));  
+    });        
+
 }
 
 function storage(name, checked) {
