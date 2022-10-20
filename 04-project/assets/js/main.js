@@ -52,15 +52,15 @@ function createTask(name, checked) {
     checkButton.addEventListener('click', () => {    
         if (!checked) {
             checkButton.classList.remove('fa-square');
-            checkButton.classList.add('fa-square-check');        
-    
-            itens[index].checked = true;     
+            checkButton.classList.add('fa-square-check');
+            
+            itens[itens.length-1].checked = true;     
             localStorage.setItem("itens", JSON.stringify(itens)); 
         } else {
             checkButton.classList.add('fa-square');
             checkButton.classList.remove('fa-square-check');        
     
-            itens[index].checked = false;     
+            itens[itens.length-1].checked = false;     
             localStorage.setItem("itens", JSON.stringify(itens)); 
         }
     });
@@ -68,7 +68,7 @@ function createTask(name, checked) {
     deleteButton.addEventListener('click', () => {                
         deleteButton.parentElement.remove();   
 
-        itens.splice(index, (++index));
+        itens.splice(itens.length-1, itens.length);
         localStorage.setItem("itens", JSON.stringify(itens));  
     });        
 
@@ -86,38 +86,7 @@ function storage(name, checked) {
 
 // check box
 
-let checks = document.querySelectorAll(".check-button");
-
-for (let index = 0; index < checks.length; index++) {
-    checks[index].addEventListener('click', () => {    
-        if (!itens[index].checked) {
-            checks[index].classList.remove('fa-square');
-            checks[index].classList.add('fa-square-check');        
-    
-            itens[index].checked = true;     
-            localStorage.setItem("itens", JSON.stringify(itens)); 
-        } else {
-            checks[index].classList.add('fa-square');
-            checks[index].classList.remove('fa-square-check');        
-    
-            itens[index].checked = false;     
-            localStorage.setItem("itens", JSON.stringify(itens)); 
-        }
-                    
-    });        
-};
-
 // delete button
 
-let deleteButton = document.querySelectorAll(".delete-button");
-
-for (let index = 0; index < deleteButton.length; index++) {
-    deleteButton[index].addEventListener('click', () => {                
-        deleteButton[index].parentElement.remove();   
-
-        itens.splice(index, (++index));
-        localStorage.setItem("itens", JSON.stringify(itens));  
-    });        
-};
 
 
