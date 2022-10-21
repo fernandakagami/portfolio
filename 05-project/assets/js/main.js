@@ -13,18 +13,18 @@ numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         number1 = number2;
         number2 = button.innerHTML;
-        displayResult.innerHTML = number2;     
-    });    
+        displayResult.innerHTML = number2;
+    });
 });
 
 operationButtons.forEach(operation => {
-    operation.addEventListener('click', () => {        
-        if (number2 === 0 || (number1 === 0 && operator != 0)) {
-            displayResult.innerHTML = 'error';        
+    operation.addEventListener('click', () => {
+        if (number2 === 0) {
+            displayResult.innerHTML = 'error';
         } else {
             operator = operation.innerHTML;    
-            displayResult.innerHTML = operator;    
-        }        
+            displayResult.innerHTML = operator;
+        }
     });
 });
 
@@ -57,7 +57,7 @@ equalsButton.addEventListener('click', () => {
         default: result = 'error'; 
             number1 = 0;
             number2 = 0;
-            operator = 0;           
+            operator = 0;
             return
       }
 });
@@ -68,3 +68,6 @@ deleteButton.addEventListener('click', () => {
     operator = 0;          
     displayResult.innerHTML = 0; 
 });
+
+//reduzir repetição
+// com mais casas decimais
