@@ -8,16 +8,13 @@ main {
 }
 
 .container {
-    width: 600px;
-    margin: 50px auto;
-    display: grid;
-    grid-template-columns: 4fr 2fr;
+    width: 400px;
+    margin: 50px auto;    
 }
   
 .calculator {        
     background-color: #000;     
-    padding: 50px 50px;
-    display: block;
+    padding: 50px 50px;    
     box-shadow: 2px 2px rgb(31, 31, 31);
 }
 
@@ -57,22 +54,3 @@ main {
     transform: translateY(3px);
   }
 
-.block {
-    color: white;
-    background-color: orangered;
-    border-radius: 5px;
-    height: 50%;
-    margin-left: 10px;
-    padding: 10px;
-}
-
-h2{ 
-    font-size: 2rem;
-    margin-bottom: 10px ;
-}
-
-.instrutions li {
-    text-align: justify;
-    list-style-type: circle;
-    list-style-position: inside;
-}
