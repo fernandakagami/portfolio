@@ -42,15 +42,18 @@ numberButtons.forEach(button => {
                     operator = 0;
                 }     
             }                 
-        }
-        
+        }        
     })
 });
 
 operationButtons.forEach(operation => {
     operation.addEventListener('click', () => {
-        operator = operation.innerHTML;    
-        displayResult.innerHTML = operator;
+        if (number1 === 0 && operator === 0) {
+            displayResult.innerHTML = 'error';
+        } else {
+            operator = operation.innerHTML;    
+            displayResult.innerHTML = operator;
+        }        
     });
 });
 
