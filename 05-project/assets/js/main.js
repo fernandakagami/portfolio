@@ -81,7 +81,12 @@ equalsButton.addEventListener('click', () => {
             displayResult.innerHTML = number1;
             number2 = 0;
             operator = 0;
-        }        
+        }
+    } else if (operator === 'x^y') {
+        number1 = parseFloat(number1) ** parseFloat(number2);
+        displayResult.innerHTML = number1;
+        number2 = 0;
+        operator = 0;
     } else {        
         displayResult.innerHTML = 'error';
         number1 = 0;
