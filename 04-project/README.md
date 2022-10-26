@@ -10,7 +10,7 @@ Project of a To Do List
 
 - HTML
 - CSS
--JavaScript
+- JavaScript
 
 ## 💻 Project
 
