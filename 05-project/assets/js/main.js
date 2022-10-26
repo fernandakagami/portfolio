@@ -20,9 +20,8 @@ numberButtons.forEach(button => {
                 if (number1.length <= '10') {
                     number1 += button.innerHTML;
                     displayResult.innerHTML = number1;
-                } else {
-                    number1 = 'error';
-                    displayResult.innerHTML = number1;
+                } else {                    
+                    displayResult.innerHTML = 'error';
                     number1 = 0;
                 }                
             }            
@@ -34,9 +33,8 @@ numberButtons.forEach(button => {
                 if (number2.length <= '10') {
                     number2 += button.innerHTML;
                     displayResult.innerHTML = number2;
-                } else {
-                    number2 = 'error';
-                    displayResult.innerHTML = number2;
+                } else {                    
+                    displayResult.innerHTML = 'error';
                     number2 = 0;
                     number1 = 0;
                     operator = 0;
