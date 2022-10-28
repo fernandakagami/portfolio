@@ -13,7 +13,7 @@ Project of a Landing Page
 
 ## 💻 Project
 
-<a href="https://fernandakagami.github.io/portfolio/02-project/">Link to the project</a><br>
+<a href="https://fernandakagami.github.io/portfolio/project02-landing-page/">Link to the project</a><br>
 
 ## :memo: License
 
