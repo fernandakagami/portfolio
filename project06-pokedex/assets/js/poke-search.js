@@ -1,46 +1,39 @@
-//async function searchPokemon(poke) {
-//    try {
-//        let searchData = await fetch (`https://pokeapi.co/api/v2/pokemon/${poke}`);
-//        let searchChangedData = await searchData.json();
+function searchPokemon(result) {
+    const pokemon = new Pokemon()
+    pokemon.number = result.id
+    pokemon.name = result.name
 
-//        const pokemon = new Pokemon()
-//        pokemon.number = searchChangedData.id
-//        pokemon.name = searchChangedData.name
+    const types = result.types.map((typeSlot) => typeSlot.type.name)
+    const [type] = types
 
-//        const types = searchChangedData.types.map((typeSlot) => typeSlot.type.name)
-//        const [type] = types
+    pokemon.types = types
+    pokemon.type = type
 
-//        pokemon.types = types
-//        pokemon.type = type
+    pokemon.photo = result.sprites.other.dream_world.front_default
 
-//        pokemon.photo = searchChangedData.sprites.other.dream_world.front_default
+    pokemon.status = result.stats.map((statSlot) => statSlot.base_stat)    
 
-//        pokemon.status = searchChangedData.stats.map((statSlot) => statSlot.base_stat)    
-
-//    return pokemon           
-//    } catch {
-//        console.log("error");
-//    }
-//}
-
-//const poke = ("bulbasaur");
-
-//console.log(searchPokemon(poke));
-
-//const pokeSearch = {};
-
-//const poke = 'bulbasaur'
-
-//pokeSearch.getPokemon = (poke = "bulbasaur") => {
-//    const url = `https://pokeapi.co/api/v2/pokemon?offset=${poke}`
-
-//    return fetch(url)
-//        .then((response) => response.json())
-//        .then(console.log(convertPokeApiDetailToPokemon))
-//}
+    return console.log(pokemon)
+}
 
 
-//pokeSearch.getPokemon(poke).then((poke = []) => {
-//    console.log(poke)
-//})
+(function getPokemon(poke = 'bulbasaur')  {
+    const url = `https://pokeapi.co/api/v2/pokemon/${poke}`
+
+    fetch(url)
+        .then((response) => response.json())
+        .then((result) => searchPokemon(result));
+})();
+
+
+
+
+
+
+
+
+    
+
+
+        
 
