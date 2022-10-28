@@ -27,20 +27,20 @@
 
 //console.log(searchPokemon(poke));
 
-const pokeSearch = {};
+//const pokeSearch = {};
 
-const pokemon = 'bulbasaur'
+//const poke = 'bulbasaur'
 
-pokeSearch.getPokemon = (pokemon = "bulbasaur") => {
-    const url = `https://pokeapi.co/api/v2/pokemon?offset=${pokemon}`
+//pokeSearch.getPokemon = (poke = "bulbasaur") => {
+//    const url = `https://pokeapi.co/api/v2/pokemon?offset=${poke}`
 
-    return fetch(url)
-        .then((response) => response.json())
-        .then(console.log(convertPokeApiDetailToPokemon))
-}
+//    return fetch(url)
+//        .then((response) => response.json())
+//        .then(console.log(convertPokeApiDetailToPokemon))
+//}
 
 
-pokeSearch.getPokemon(pokemon).then((pokemon = []) => {
-    console.log(pokemon)
-})
+//pokeSearch.getPokemon(poke).then((poke = []) => {
+//    console.log(poke)
+//})
 
