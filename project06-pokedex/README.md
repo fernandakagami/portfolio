@@ -1,7 +1,7 @@
-<h1 align="center"> Calculator </h1>
+<h1 align="center"> Pokedex </h1>
 
 <p align="center">
-Project of a Calculator
+Project of a Pokedex
 </p>
 
 <br>
@@ -14,7 +14,10 @@ Project of a Calculator
 
 ## 💻 Project
 
-<a href="https://fernandakagami.github.io/portfolio/project05-calculator/">Link to the project</a><br>
+This was a project of Digital Innovation One. Although I changed so much the project. Because of that, I bring the project to portfolio.
+<-- I am still buind this project. -->
+
+<a href="https://fernandakagami.github.io/portfolio/project06-pokedex/">Link to the project</a><br>
 
 ## :memo: License
 
