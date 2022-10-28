@@ -14,7 +14,7 @@ Project of a To Do List
 
 ## 💻 Project
 
-<a href="https://fernandakagami.github.io/portfolio/04-project/">Link to the project</a><br>
+<a href="https://fernandakagami.github.io/portfolio/project04-to-do-list/">Link to the project</a><br>
 
 ## :memo: License
 
