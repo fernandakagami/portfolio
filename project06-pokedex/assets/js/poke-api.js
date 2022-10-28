@@ -36,16 +36,3 @@ pokeApi.getPokemons = (offset = 0, limit = 10) => {
         .then((pokemonsDetails) => pokemonsDetails)
 }
 
-
-const pokeSearch = {};
-
-const poke = 'bulbasaur'
-
-pokeSearch.getPokemon = (poke = "bulbasaur") => {
-    const url = `https://pokeapi.co/api/v2/pokemon?offset=${poke}`
-
-    return fetch(url)
-        .then((response) => response.json())
-        .then(console.log(convertPokeApiDetailToPokemon))
-}
-
