@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+
+    <!-- Reset -->
+    <link rel="stylesheet" href="assets/css/reset.css">        
+
+    <!-- Font Robot -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&family=Wendy+One&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/pokemon-type.css"> 
+    
+</head>
+<body>
+    <section class="container">
+
+        <div class="logo-search">
+            <div class="content-search">
+                <input type="search">    
+            </div> 
+            <button type="button" class="collapsible">
+                <img src="assets/images/graysearch.png" alt="search button">
+            </button>                            
+        </div>
+
+        <h1>Pokedex</h1>        
+
+        <ol class="pokemons">
+
+            <!-- Pokemons here-->
+
+        </ol>
+
+        <div class="pagination">
+            <button id="loadMore" type="button">
+                <img src="assets/images/pokeball.png" alt="Pokeball">                
+            </button>
+        </div>
+        
+    </section>      
+    
+    <!-- JS -->
+    <script src="assets/js/poke-search.js"></script>
+    <script src="assets/js/search-button.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/poke-api.js"></script>
+    <script src="assets/js/pokemon-model.js"></script>  
+    <script src="assets/js/main.js"></script>  
+    
+</body>
+</html>
+
+
