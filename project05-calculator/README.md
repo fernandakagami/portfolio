@@ -14,7 +14,7 @@ Project of a Calculator
 
 ## 💻 Project
 
-<a href="https://fernandakagami.github.io/portfolio/05-project/">Link to the project</a><br>
+<a href="https://fernandakagami.github.io/portfolio/project05-calculator/">Link to the project</a><br>
 
 ## :memo: License
 
