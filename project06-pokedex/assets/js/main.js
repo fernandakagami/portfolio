@@ -4,7 +4,8 @@ const pokemon = document.querySelector(".pokemon");
 const maxRecords = 151;
 const limit = 10;
 let offset = 0;
-const chartPokemons = [];
+let chartPokemons = [];
+let color = '';
 
 function loadPokemonItens(offset, limit) {
     pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
@@ -70,8 +71,6 @@ function loadPokemonItens(offset, limit) {
             divImage.appendChild(image);
             li.appendChild(hidding);
             hidding.appendChild(canvas);
-
-            let color = '';
 
             if (pokemon.types[0] == 'normal') {
                 color = '#a6a877';
