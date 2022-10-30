@@ -15,25 +15,36 @@ body {
     align-items: center;
 }
 
+.content-return {
+    display: none;
+}
+
 .content-return img {
     width: 15px;
     height: 15px;
+    cursor: pointer; 
 }
 
 /* Style the button that is used to open and close the collapsible content */
 .collapsible {
     background-color: #fcfcfc;    
-    cursor: pointer;     
+    cursor: pointer;    
     border: none;
     outline: none;
     font-size: 15px;    
+    margin-left: auto;
 }
   
   /* Style the collapsible content. Note: hidden by default */
 .content-search {
     display: none;
-    overflow: hidden;
-    justify-content: right;
+    overflow: hidden;    
+    border: none;
+    border-radius: 20px;    
+    align-items: center;
+    background: rgb(212, 212, 212); 
+    padding-right: 10px;    
+    margin-left: auto;
 }
 
 /* clears the 'X' from Internet Explorer */
@@ -46,28 +57,32 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
 
-
 input {
     width: 250px;
     font-size: 14px;
     padding: 10px;
-    color: black;
-    background: rgb(212, 212, 212);    
-    background-image: url('../images/close.png');
-    background-size: 1rem;
-    background-repeat: no-repeat;
-    background-position: 95% 50%;
+    color: black;       
     border: none;
     border-radius: 20px;
+    background: rgb(212, 212, 212); 
   }
 
 input:focus {
     outline: none;
   }
 
+.content-search img {
+    width: 12px;
+    height: 12px;    
+}
+
 .collapsible img {
     width: 18px;
     height: 18px;
+}
+
+.close {
+    cursor: pointer; 
 }
 
 h1 {    
@@ -164,4 +179,5 @@ img {
 #loadMore img {
     width: 4vw;
     height: 4vw;
+    cursor: pointer; 
 }
