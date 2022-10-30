@@ -19,8 +19,6 @@ function loadPokemonItens(offset, limit) {
 
 loadPokemonItens(offset, limit);
 
-const qtdRecordNextPage = offset + limit;
-
 loadMoreButton.addEventListener('click', () => {
     offset += limit;
     const qtdRecordsWithNexPage = offset + limit;    
