@@ -10,7 +10,7 @@ document.querySelector('.pokemon-input').addEventListener("keypress", (e) => {
         content.style.display = "none";
         coll.style.display = "inline-block";
         let pokemonInput = document.querySelector('.pokemon-input');        
-        pokeSearch(pokemonInput.value);
+        pokeSearch(pokemonInput.value.toLowerCase().replaceAll(/\s/g,''));
         pokemonInput.value = '';
     }
 })
@@ -32,3 +32,4 @@ document.querySelector('.content-return').addEventListener("click", () => {
     
     loadPokemonItens(offset, limit);    
 })
+
