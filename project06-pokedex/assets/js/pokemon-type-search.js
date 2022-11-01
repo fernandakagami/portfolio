@@ -1,5 +1,5 @@
 let chartPokemons = [];
-const type = 'normal';
+const type = '';
 
 if (type === 'normal') {
     pokeSearch(1);
@@ -54,4 +54,10 @@ function pokeSearch(type) {
             .then(convertPokeApiDetailToPokemon)
             .then(isFirstGeneration)
         ))
+        .catch(error => {
+            if (error) {
+                console.log('catcht it!', error)
+            }
+            
+        })
 };
