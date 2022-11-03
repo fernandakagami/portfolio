@@ -60,42 +60,10 @@ function convertPokemonToHtml(pokemon) {
     li.appendChild(hidding);
     hidding.appendChild(canvas);
 
-    if (pokemon.types[0] == 'normal') {
-        color = '#a6a877';
-    } else if (pokemon.types[0] == 'grass') {
-        color= '#77c850';
-    } else if (pokemon.types[0] == 'fire') {
-        color= '#ee7f30';
-    } else if (pokemon.types[0] == 'water') {
-        color= '#678fee';
-    } else if (pokemon.types[0] == 'electric') {
-        color= '#f7cf2e';
-    } else if (pokemon.types[0] == 'ice') {
-        color= '#98d5d7';
-    } else if (pokemon.types[0] == 'ground') {
-        color= '#dfbf69';
-    } else if (pokemon.types[0] == 'flying') {
-        color= '#a98ff0';
-    } else if (pokemon.types[0] == 'poison') {
-        color= '#a040a0';
-    } else if (pokemon.types[0] == 'fighting') {
-        color= '#bf3029';
-    } else if (pokemon.types[0] == 'psychic') {
-        color= '#f65687';
-    } else if (pokemon.types[0] == 'dark') {
-        color= '#725847';
-    } else if (pokemon.types[0] == 'rock') {
-        color= '#b8a137';
-    } else if (pokemon.types[0] == 'bug') {                
-        color= '#a8b720';
-    } else if (pokemon.types[0] == 'ghost') {
-        color= '#6e5896';
-    } else if (pokemon.types[0] == 'steel') {
-        color= '#b9b7cf';
-    } else if (pokemon.types[0] == 'dragon') {
-        color= '#6f38f6';
-    } else if (pokemon.types[0] == 'fairy') {
-        color= '#f9aec7';
+    const pokemonType = pokemon.types[0];
+
+    if (typeToColor[pokemonType]) {
+        color = typeToColor[pokemonType];
     }
 
     const labels = [
