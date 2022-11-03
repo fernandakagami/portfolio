@@ -1,13 +1,13 @@
 const pagination = document.querySelector('.pagination');
 const ol = document.querySelector('.pokemons');
 const closeButton = document.querySelector(".close");
+let input = document.querySelector('.pokemon-input');
 
 document.querySelector('.pokemon-input').addEventListener("keypress", (e) => {    
     if (e.key === "Enter") {        
         ol.innerHTML = '';        
-        pagination.style.display = "none";                
-        let pokemonInput = document.querySelector('.pokemon-input');        
-        pokeSearch(pokemonInput.value.toLowerCase().replaceAll(/\s/g,''));  
+        pagination.style.display = "none";                        
+        pokeSearch(input.value.toLowerCase().replaceAll(/\s/g,''));  
     }
 })
 
@@ -50,9 +50,12 @@ function pokeSearchPokemon(pokemon) {
 
 closeButton.addEventListener("click", () => {
     ol.innerHTML = '';
-    pagination.style.display = "flex";    
-    offset = 0
-    
+    pagination.style.display = "flex";
+    content.style.display = "none";    
+    coll.style.display = "flex";
+    input.value = "";
+
+    offset = 0    
     loadPokemonItens(offset, limit);    
 })
 
