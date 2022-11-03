@@ -1,58 +1,19 @@
 const pagination = document.querySelector('.pagination');
-const returnButton = document.querySelector('.content-return');
 const ol = document.querySelector('.pokemons');
+const closeButton = document.querySelector(".close");
 
 document.querySelector('.pokemon-input').addEventListener("keypress", (e) => {    
     if (e.key === "Enter") {        
         ol.innerHTML = '';        
-        pagination.style.display = "none";        
-        returnButton.style.display = 'inline-block';
-        content.style.display = "none";
-        coll.style.display = "inline-block";
+        pagination.style.display = "none";                
         let pokemonInput = document.querySelector('.pokemon-input');        
-        pokeSearch(pokemonInput.value.toLowerCase().replaceAll(/\s/g,''));
-        pokemonInput.value = '';
+        pokeSearch(pokemonInput.value.toLowerCase().replaceAll(/\s/g,''));  
     }
 })
 
-function pokeSearch(pokemon) {      
-
-    if (pokemon === 'normal') {
-        pokeSearchType(1);
-    } else if (pokemon === 'fighting') {
-        pokeSearchType(2);
-    } else if (pokemon === 'flying') {
-        pokeSearchType(3);
-    } else if (pokemon === 'poison') {
-        pokeSearchType(4);
-    } else if (pokemon === 'ground') {
-        pokeSearchType(5);
-    } else if (pokemon === 'rock') {
-        pokeSearchType(6);
-    } else if (pokemon === 'bug') {
-        pokeSearchType(7);
-    } else if (pokemon === 'ghost') {
-        pokeSearchType(8);
-    } else if (pokemon === 'steel') {
-        pokeSearchType(9);
-    } else if (pokemon === 'fire') {
-        pokeSearchType(10);
-    } else if (pokemon === 'water') {
-        pokeSearchType(11);
-    } else if (pokemon === 'grass') {
-        pokeSearchType(12);
-    } else if (pokemon === 'electric') {
-        pokeSearchType(13);
-    } else if (pokemon === 'psychic') {
-        pokeSearchType(14);
-    } else if (pokemon === 'ice') {
-        pokeSearchType(15);
-    } else if (pokemon === 'dragon') {
-        pokeSearchType(16);
-    } else if (pokemon === 'dark') {
-        pokeSearchType(17);
-    } else if (pokemon === 'fairy') {
-        pokeSearchType(18);
+function pokeSearch(pokemon) {    
+    if (typeOfPokemon[pokemon]) {
+        pokeSearchType(typeOfPokemon[pokemon]);
     } else {
         pokeSearchPokemon(pokemon);
     }
@@ -69,7 +30,7 @@ function pokeSearchType(pokemon) {
             .then(pokemonData => pokemonData.json())
             .then(pokemonResultData => pokemonResultData)
             .then(convertPokeApiDetailToPokemon)
-            .then(isFirstGeneration)
+            .then(firstGenerationPokemontoHtml)
         ))                
 };
 
@@ -87,10 +48,9 @@ function pokeSearchPokemon(pokemon) {
             
 };
 
-document.querySelector('.content-return').addEventListener("click", () => {
+closeButton.addEventListener("click", () => {
     ol.innerHTML = '';
-    pagination.style.display = "flex";
-    returnButton.style.display = "none";
+    pagination.style.display = "flex";    
     offset = 0
     
     loadPokemonItens(offset, limit);    
@@ -111,5 +71,11 @@ function pageError() {
     li.appendChild(image);
     li.appendChild(p);
     p.appendChild(pText);
+}
+
+function firstGenerationPokemontoHtml(pokemon) {
+    if (pokemon.number <= 151) {
+        convertPokemonToHtml(pokemon);
+    }
 }
 
