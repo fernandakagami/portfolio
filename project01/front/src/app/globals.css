@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .checkbox:hover input:not(:checked)~.checkmark {
+    @apply bg-[#24AB70];
+  }
+
+  .checkbox input:checked~.checkmark {
+    @apply bg-[#24AB70] border-[#24AB70];
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .checkbox input:checked~.checkmark:after {
+    display: block;
+  }
+
+  .checkbox .checkmark:after {
+    right: 0.2rem;
+    top: 0rem;
+    width: .4rem;
+    height: .7rem;
+    border: solid white;
+    border-width: 0 .18rem .18rem 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+}
