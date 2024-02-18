@@ -2,10 +2,11 @@
 import axios from "axios";
 import { useState } from "react";
 import { Icon } from '@iconify/react';
+import Link from "next/link";
 
 export default function Create() {
   const [attributes, setAtributes] = useState({
-    name: '',
+    name: "",
     guests: 0,
     photo: "",
     fan: false,
@@ -15,19 +16,31 @@ export default function Create() {
   });
 
   const updateAttributes = (value, field) => {
-    setAtributes({ ...attributes, [field]: value });
+    setAtributes(attributes => ({ ...attributes, [field]: value }));
   };
 
   async function onSubmit(event) {
     event.preventDefault()
     await axios.post("http://127.0.0.1:8000/api/room/", attributes);
+    setAtributes({
+      name: "",
+      guests: 0,
+      photo: "",
+      fan: false,
+      air_conditioning: false,
+      mini_bar: false,
+      price: ""
+    })
   }
 
   return (
     <div className='container mx-auto mt-20 w-full max-w-xl'>
       <div className="border-2 rounded-md border-[#24AB70] py-6">
-        <div>
-          <Icon icon="material-symbols:close" />
+        <div style={{ transform: "translate(30px, 0px)" }}>
+          <Link className="flex items-center justify-start cursor-pointer text-xs mb-4" href="/rooms">
+            <Icon icon="fluent:ios-arrow-24-filled" />
+            Retornar para quartos
+          </Link>
           <h1 className="flex justify-center text-xl mb-6 font-bold uppercase">Cadastrar um quarto</h1>
         </div>
         <form className='w-full max-w-lg m-auto' onSubmit={onSubmit}>
