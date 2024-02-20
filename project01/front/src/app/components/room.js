@@ -1,4 +1,5 @@
 import { Icon } from '@iconify/react';
+import Link from "next/link";
 
 export default function Room({ room }) {
   return (
@@ -28,7 +29,7 @@ export default function Room({ room }) {
           </div>
         </div>
         <div className='flex justify-end items-center'>
-          <button className='px-14 py-2 bg-[#24AB70] text-white rounded'>Editar</button>
+          <Link href={`/rooms/update/${room.id}`} className='px-14 py-2 bg-[#24AB70] text-white rounded'>Editar</Link>
         </div>
       </div>
     </div >

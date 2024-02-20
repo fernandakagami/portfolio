@@ -49,7 +49,7 @@ export default function Bar() {
       </form >
 
       {
-        open && <div className="absolute right-0 z-10 p-3 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none w-48" tabIndex="-1">
+        open && <div className="absolute right-0 z-10 p-3 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" tabIndex="-1">
           <div className="py-1 relative">
             <div className="absolute top-[-5.25px] right-[-6.25px] cursor-pointer" onClick={() => setOpen(false)}>
               <Icon icon="material-symbols:close" />
