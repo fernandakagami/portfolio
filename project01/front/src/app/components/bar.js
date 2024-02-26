@@ -18,23 +18,23 @@ export default function Bar() {
   }
 
   return (
-    <div className="bg-white bottom-44 rounded-full flex items-center justify-center" style={{ width: "800px", height: "100px", transform: "translateY(-265px)" }}>
+    <div className="bg-white bottom-44 rounded-full flex items-center justify-center" style={{ width: "900px", height: "100px", transform: "translateY(-265px)" }}>
       <form className="flex flex-row" >
-        <div className="flex flex-col items-end border-e pe-8">
+        <div className="flex flex-col items-end justify-center border-e px-8">
           <div className="flex gap-2 items-center">
             <Icon icon="clarity:calendar-line" className="text-[#24AB70] text-2xl" />
             <h3 className="text-[#222222] text-2xl">Check-in</h3>
           </div>
-          <DatePicker selected={date} onChange={date => setDate(date)} style={{ color: "black" }} dateFormat="dd MMM yyyy" className="text-end cursor-pointer" />
+          <DatePicker selected={date} onChange={date => setDate(date)} dateFormat="dd MMM yyyy" className="text-end cursor-pointer w-40 border-transparent" />
         </div>
-        <div className="flex flex-col items-end border-e pe-8">
+        <div className="flex flex-col items-end justify-center border-e px-8">
           <div className="flex gap-2 items-center">
             <Icon icon="clarity:calendar-line" className="text-[#24AB70] text-2xl" />
             <h3 className="text-[#222222] text-2xl">Check-out</h3>
           </div>
-          <DatePicker selected={date} onChange={date => setDate(date)} style={{ color: "black" }} dateFormat="dd MMM yyyy" className="text-end cursor-pointer" />
+          <DatePicker selected={date} onChange={date => setDate(date)} dateFormat="dd MMM yyyy" className="text-end cursor-pointer w-40 border-transparent" />
         </div>
-        <div className="relative flex flex-col items-end ps-8 pe-36 cursor-pointer" onClick={() => setOpen(!open)}>
+        <div className="relative flex flex-col items-end justify-center ps-8 pe-36 cursor-pointer" onClick={() => setOpen(!open)}>
           <div className="flex gap-2 items-center">
             <Icon icon="ri:user-fill" className="text-[#24AB70] text-2xl" />
             <h3 className="text-[#222222] text-2xl">Quartos para</h3>
@@ -42,7 +42,7 @@ export default function Bar() {
           <div>{reservation?.room} quarto, {reservation?.guest} pessoas</div>
         </div>
         <div className="cursor-pointer relative">
-          <button className="absolute bg-[#24AB70] text-[#fff] rounded-full top-[-22px] right-[-60px]" style={{ width: "165px", height: "100px" }}>
+          <button className="absolute bg-[#24AB70] text-[#fff] rounded-full top-[-13px] right-[-60px]" style={{ width: "165px", height: "100px" }}>
             Buscar
           </button>
         </div>

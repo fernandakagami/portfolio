@@ -43,7 +43,7 @@ export default function Create() {
           </Link>
           <h1 className="flex justify-center text-xl mb-6 font-bold uppercase">Cadastrar um quarto</h1>
         </div>
-        <form className='w-full max-w-lg m-auto' onSubmit={onSubmit}>
+        <form className='w-full max-w-lg m-auto'>
           <div className='-mx-3 mb-6 flex flex-wrap'>
             <div className='w-full px-3'>
               <label
@@ -164,7 +164,7 @@ export default function Create() {
               />
             </div>
           </div>
-          <div className="flex justify-center mt-10 py-2 bg-[#24AB70] rounded text-white cursor-pointer">
+          <div className="flex justify-center mt-10 py-2 bg-[#24AB70] rounded text-white cursor-pointer" onClick={onSubmit}>
             <button>Cadastrar</button>
           </div>
         </form>

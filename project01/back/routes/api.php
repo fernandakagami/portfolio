@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
@@ -24,3 +25,9 @@ Route::post('/room', [RoomController::class, 'store']);
 Route::get('/room/{id}', [RoomController::class, 'show']);
 Route::patch('/room/{id}', [RoomController::class, 'update']);
 Route::delete('/room/{id}', [RoomController::class, 'destroy']);
+
+Route::get('/booking', [BookingController::class, 'index']);
+Route::post('/booking', [BookingController::class, 'store']);
+Route::get('/booking/{id}', [BookingController::class, 'show']);
+Route::patch('/booking/{id}', [BookingController::class, 'update']);
+Route::delete('/booking/{id}', [BookingController::class, 'destroy']);

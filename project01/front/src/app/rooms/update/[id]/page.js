@@ -32,8 +32,7 @@ export default function Update({ params: { id } }) {
     await axios.delete(`http://127.0.0.1:8000/api/room/${id}`)
       .then((response) => {
         setOpenModal(false)
-        router.push('/rooms')
-        console.log(response)
+        router.push('/rooms')        
       }).catch((error) => {
         console.log(error)
       })
@@ -63,7 +62,7 @@ export default function Update({ params: { id } }) {
           </Link>
           <h1 className="flex justify-center text-xl mb-6 font-bold uppercase">Atualizar quarto</h1>
         </div>
-        <form className='w-full max-w-lg m-auto' onSubmit={onSubmit}>
+        <form className='w-full max-w-lg m-auto'>
           <div className='-mx-3 mb-6 flex flex-wrap'>
             <div className='w-full px-3'>
               <label
@@ -187,7 +186,7 @@ export default function Update({ params: { id } }) {
               />
             </div>
           </div>
-          <div className="flex justify-center mt-10 py-2 bg-[#24AB70] rounded text-white cursor-pointer">
+          <div className="flex justify-center mt-10 py-2 bg-[#24AB70] rounded text-white cursor-pointer" onClick={onSubmit}>
             <button>Atualizar</button>
           </div>
           <div onClick={() => setOpenModal(true)} className="flex justify-center mt-2 py-2 bg-red-500 rounded text-white cursor-pointer">

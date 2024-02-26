@@ -11,7 +11,7 @@ export default function Menu() {
         <Link href="/">Home</Link>
       </li>
       <li className="mr-5 cursor-pointer" style={{ color: "#222222" }}>
-        <Link href="/">Reservas</Link>
+        <Link href="/booking">Reservas</Link>
       </li>
       <li className="cursor-pointer" style={{ color: "#222222" }}>
         <Link href="/rooms">Quartos</Link>
