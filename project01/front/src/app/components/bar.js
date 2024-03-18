@@ -5,15 +5,23 @@ import { useState } from "react";
 import { Icon } from '@iconify/react';
 
 export default function Bar() {
-  const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
-  let [room, setRoom] = useState(1);
   let [guest, setGuest] = useState(1);
+  const [attributes, setAtributes] = useState({
+    initial_date: new Date(),
+    final_date: new Date(),
+    guests: 1
+  });
 
-  const [reservation, setReservation] = useState({ room: 1, guest: 1 })
+  const [reservation, setReservation] = useState({ guest: 1 })
+
+  const updateAttributes = (value, field) => {
+    setAtributes(attributes => ({ ...attributes, [field]: value }));
+  };
 
   const handleSetReservation = () => {
-    setReservation({ room, guest })
+    setReservation({ guest })
+    updateAttributes(guest, 'guests')
     setOpen(false)
   }
 
@@ -25,21 +33,21 @@ export default function Bar() {
             <Icon icon="clarity:calendar-line" className="text-[#24AB70] text-2xl" />
             <h3 className="text-[#222222] text-2xl">Check-in</h3>
           </div>
-          <DatePicker selected={date} onChange={date => setDate(date)} dateFormat="dd MMM yyyy" className="text-end cursor-pointer w-40 border-transparent" />
+          <DatePicker selected={attributes.initial_date} value={attributes.initial_date} onChange={date => updateAttributes(date, 'initial_date')} dateFormat="dd MMM yyyy" className="text-end cursor-pointer w-40 border-transparent" />
         </div>
         <div className="flex flex-col items-end justify-center border-e px-8">
           <div className="flex gap-2 items-center">
             <Icon icon="clarity:calendar-line" className="text-[#24AB70] text-2xl" />
             <h3 className="text-[#222222] text-2xl">Check-out</h3>
           </div>
-          <DatePicker selected={date} onChange={date => setDate(date)} dateFormat="dd MMM yyyy" className="text-end cursor-pointer w-40 border-transparent" />
+          <DatePicker selected={attributes.final_date} value={attributes.final_date} onChange={date => updateAttributes(date, 'final_date')} dateFormat="dd MMM yyyy" className="text-end cursor-pointer w-40 border-transparent" />
         </div>
         <div className="relative flex flex-col items-end justify-center ps-8 pe-36 cursor-pointer" onClick={() => setOpen(!open)}>
           <div className="flex gap-2 items-center">
             <Icon icon="ri:user-fill" className="text-[#24AB70] text-2xl" />
             <h3 className="text-[#222222] text-2xl">Quartos para</h3>
           </div>
-          <div>{reservation?.room} quarto, {reservation?.guest} pessoas</div>
+          <div>{reservation?.guest} pessoas</div>
         </div>
         <div className="cursor-pointer relative">
           <button className="absolute bg-[#24AB70] text-[#fff] rounded-full top-[-13px] right-[-60px]" style={{ width: "165px", height: "100px" }}>
@@ -49,7 +57,7 @@ export default function Bar() {
       </form >
 
       {
-        open && <div className="absolute right-0 z-10 p-3 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" tabIndex="-1">
+        open && <div className="absolute right-[160px] top-[103px] z-10 p-3 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" tabIndex="-1">
           <div className="py-1 relative">
             <div className="absolute top-[-5.25px] right-[-6.25px] cursor-pointer" onClick={() => setOpen(false)}>
               <Icon icon="material-symbols:close" />
@@ -57,18 +65,6 @@ export default function Bar() {
             <p className="mb-2 flex justify-center">Consulta</p>
             <hr></hr>
             <div className="mt-3">
-              <div className="flex flex-row justify-between mb-2">
-                <p>Quarto</p>
-                <div className="flex flex-row">
-                  <button onClick={() => setRoom((room) => room + 1)}>+</button>
-                  <div className="w-10">
-                    <p className="text-center">
-                      {room}
-                    </p>
-                  </div>
-                  <button onClick={() => setRoom((room) => Math.max(room - 1, 0))}>-</button>
-                </div>
-              </div>
               <div className="flex flex-row justify-between">
                 <p>Pessoas</p>
                 <div className="flex flex-row">
@@ -78,7 +74,7 @@ export default function Bar() {
                       {guest}
                     </p>
                   </div>
-                  <button onClick={() => setGuest((guest) => Math.max(guest - 1, 0))}>-</button>
+                  <button onClick={() => setGuest((guest) => Math.max(guest - 1, 1))}>-</button>
                 </div>
               </div>
             </div>

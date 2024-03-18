@@ -8,19 +8,20 @@ import DatePicker from "react-datepicker";
 import { useRouter } from 'next/navigation';
 import "react-datepicker/dist/react-datepicker.css"
 
-export default function Create() {  
+export default function Create() {
   const router = useRouter();
   const [rooms, setRooms] = useState([]);
+  const [erro, setErro] = useState({});
   const [attributes, setAtributes] = useState({
     initial_date: new Date(),
     final_date: new Date(),
-    room_id: "", 
-  }); 
+    room_id: "",
+  });
 
   async function fetchRooms() {
     await axios.get("http://127.0.0.1:8000/api/room")
-      .then((response) => {        
-        setRooms(response.data)              
+      .then((response) => {
+        setRooms(response.data)
       }).catch((error) => {
         console.log(error)
       })
@@ -28,18 +29,26 @@ export default function Create() {
 
   useEffect(() => {
     fetchRooms()
-  }, [])    
+  }, [])
 
   const updateAttributes = (value, field) => {
-    setAtributes(attributes => ({ ...attributes, [field]: value }));
+    setAtributes(attributes => ({ ...attributes, [field]: value }))
   };
 
   async function onSubmit(event) {
-    event.preventDefault()    
+    event.preventDefault()
     await axios.post("http://127.0.0.1:8000/api/booking/", attributes)
     .then(() => {
         router.push('/booking')
-      });    
+      })
+    .catch((error) => {
+      if (error.response.data.errors) {
+        setErro(error.response.data.errors)
+      } else {
+        setErro(error.response.data)
+        console.log(erro)
+      }
+    })
   }
 
   return (
@@ -62,11 +71,12 @@ export default function Create() {
                     <Image src={room.photo} alt={room.name} width={200} height={100} />
                     <p>{ room.name }</p>
                   </div>
-                  <input type="radio" name="room_id" value={room.id} onChange={(e) => updateAttributes(e.target.value, 'room_id')}/>                  
-                </label>    
+                  <input type="radio" name="room_id" value={room.id} onChange={(e) => updateAttributes(e.target.value, 'room_id')}/>
+                </label>
               ))
-            }           
+            }
           </div>
+          {erro?.room_id && (<div className="text-red-500 text-xs">Escolha pelo menos um quarto.</div>)}
           <div className="mt-5">
             <p className="mb-4">Escolha a data para:</p>
             <div className="flex flex-row items-center justify-start px-8">
@@ -75,6 +85,7 @@ export default function Create() {
                 <h3 className="text-[#222222] text-1xl">Check-in</h3>
               </div>
               <DatePicker selected={attributes.initial_date} value={attributes.initial_date} dateFormat="dd MMM yyyy" className="text-end cursor-pointer w-40 border-transparent" onChange={(date) => updateAttributes(date, 'initial_date')}/>
+              {erro?.initial_date && (<div className="text-red-500 text-xs">{erro.initial_date}</div>)}
             </div>
             <div className="flex flex-row items-center justify-start px-8">
               <div className="flex gap-2 items-center">
@@ -82,6 +93,7 @@ export default function Create() {
                 <h3 className="text-[#222222] text-1xl">Check-out</h3>
               </div>
               <DatePicker selected={attributes.final_date} value={attributes.final_date} onChange={(date) => updateAttributes(date, 'final_date')} dateFormat="dd MMM yyyy" className="text-end cursor-pointer w-40 border-transparent" />
+              {erro?.final_date && (<div className="text-red-500 text-xs">{erro.final_date}</div>)}
             </div>
           </div>
           <div className="flex justify-center mt-10 py-2 bg-[#24AB70] rounded text-white cursor-pointer mb-5" onClick={onSubmit}>

@@ -5,6 +5,8 @@ import { Icon } from '@iconify/react';
 import Link from "next/link";
 
 export default function Create() {
+  const [erro, setErro] = useState({});
+
   const [attributes, setAtributes] = useState({
     name: "",
     guests: 0,
@@ -21,16 +23,22 @@ export default function Create() {
 
   async function onSubmit(event) {
     event.preventDefault()
-    await axios.post("http://127.0.0.1:8000/api/room/", attributes);
-    setAtributes({
-      name: "",
-      guests: 0,
-      photo: "",
-      fan: false,
-      air_conditioning: false,
-      mini_bar: false,
-      price: ""
-    })
+    await axios.post("http://127.0.0.1:8000/api/room/", attributes)
+    .then(() => {
+      setAtributes({
+        name: "",
+        guests: 0,
+        photo: "",
+        fan: false,
+        air_conditioning: false,
+        mini_bar: false,
+        price: ""
+      })
+    }).catch((error) => {
+      setErro(error.response.data.errors)
+      console.log(error.response.data.errors)
+      console.log(erro)
+    });
   }
 
   return (
@@ -59,6 +67,7 @@ export default function Create() {
                 onChange={(e) => updateAttributes(e.target.value, 'name')}
                 value={attributes.name}
               />
+              {erro.name && (<div className="text-red-500 text-xs">{erro.name}</div>)}
             </div>
           </div>
           <div className='-mx-3 mb-6 flex flex-wrap'>
@@ -67,7 +76,7 @@ export default function Create() {
                 className='mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700'
                 htmlFor='grid-name'
               >
-                Quantidade de pessoas
+                Quantidade de hóspedes
               </label>
               <input
                 className='mb-3 block w-full appearance-none rounded border border-gray-50 bg-gray-50 px-4 py-3 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none'
@@ -76,6 +85,7 @@ export default function Create() {
                 onChange={(e) => updateAttributes(e.target.value, 'guests')}
                 value={attributes.guests}
               />
+              {erro.guests && (<div className="text-red-500 text-xs">{erro.guests}</div>)}
             </div>
           </div>
           <div className='-mx-3 mb-6 flex flex-wrap'>
@@ -93,6 +103,7 @@ export default function Create() {
                 onChange={(e) => updateAttributes(e.target.value, 'photo')}
                 value={attributes.photo}
               />
+              { erro.photo && (<div className="text-red-500 text-xs">{erro.photo}</div>)}
             </div>
           </div>
           <div className='-mx-3 mb-6 flex flex-col flex-wrap px-3'>
@@ -162,6 +173,7 @@ export default function Create() {
                 onChange={(e) => updateAttributes(e.target.value, 'price')}
                 value={attributes.price}
               />
+              {erro.price && (<div className="text-red-500 text-xs">{erro.price}</div>)}
             </div>
           </div>
           <div className="flex justify-center mt-10 py-2 bg-[#24AB70] rounded text-white cursor-pointer" onClick={onSubmit}>

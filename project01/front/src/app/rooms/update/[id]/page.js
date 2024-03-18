@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 
 export default function Update({ params: { id } }) {
   const router = useRouter();
+  const [erro, setErro] = useState({});
   const [openModal, setOpenModal] = useState(false);
   const [attributes, setAtributes] = useState({
     name: "",
@@ -31,10 +32,10 @@ export default function Update({ params: { id } }) {
   async function deleteRoom() {
     await axios.delete(`http://127.0.0.1:8000/api/room/${id}`)
       .then((response) => {
-        setOpenModal(false)
-        router.push('/rooms')        
+        setOpenModal(false);
+        router.push('/rooms')
       }).catch((error) => {
-        console.log(error)
+        console.log(error);
       })
   }
 
@@ -48,7 +49,13 @@ export default function Update({ params: { id } }) {
 
   async function onSubmit(event) {
     event.preventDefault()
-    await axios.patch(`http://127.0.0.1:8000/api/room/${id}`, attributes);
+    await axios.patch(`http://127.0.0.1:8000/api/room/${id}`, attributes)
+    .then(() => {
+      router.push('/rooms');
+    }).catch((error) => {
+      setErro(error.response.data.errors)
+      console.log(error);
+    });
   }
 
   if (!attributes) return null
@@ -78,6 +85,7 @@ export default function Update({ params: { id } }) {
                 onChange={(e) => updateAttributes(e.target.value, 'name')}
                 value={attributes.name}
               />
+              {erro?.name && (<div className="text-red-500 text-xs">{erro.name}</div>)}
             </div>
           </div>
           <div className='-mx-3 mb-6 flex flex-wrap'>
@@ -95,6 +103,7 @@ export default function Update({ params: { id } }) {
                 onChange={(e) => updateAttributes(e.target.value, 'guests')}
                 value={attributes.guests}
               />
+              {erro?.guests && (<div className="text-red-500 text-xs">O campo hóspedes é obrigatório.</div>)}
             </div>
           </div>
           <div className='-mx-3 mb-6 flex flex-wrap'>
@@ -112,6 +121,7 @@ export default function Update({ params: { id } }) {
                 onChange={(e) => updateAttributes(e.target.value, 'photo')}
                 value={attributes.photo}
               />
+              {erro?.photo && (<div className="text-red-500 text-xs">{erro.photo}</div>)}
             </div>
           </div>
           <div className='-mx-3 mb-6 flex flex-col flex-wrap px-3'>
@@ -184,6 +194,7 @@ export default function Update({ params: { id } }) {
                 onChange={(e) => updateAttributes(e.target.value, 'price')}
                 value={attributes.price}
               />
+              {erro?.price && (<div className="text-red-500 text-xs">{erro.price}</div>)}
             </div>
           </div>
           <div className="flex justify-center mt-10 py-2 bg-[#24AB70] rounded text-white cursor-pointer" onClick={onSubmit}>
