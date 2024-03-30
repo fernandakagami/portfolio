@@ -1,7 +1,10 @@
 import room from '../assets/img/room1.jpg';
 import Bar from './components/bar';
+import Table from './components/table';
+import { SearchProvider } from '../contexts/SearchContext';
 
 export default function Home() {
+
   return (
     <div className="flex flex-col justify-center items-center">
       <main className='w-screen flex justify-start flex-col mt-8 sm:max-w-5xl mx-auto' style={{ height: 'calc(100vh - 19rem)' }}>
@@ -13,7 +16,10 @@ export default function Home() {
           </div>
         </div>
       </main >
-      <Bar />
+      <SearchProvider>
+        <Bar />
+        <Table/>
+      </SearchProvider>
     </div >
   )
 }

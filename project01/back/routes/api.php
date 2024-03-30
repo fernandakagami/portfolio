@@ -29,6 +29,6 @@ Route::delete('/room/{id}', [RoomController::class, 'destroy']);
 Route::get('/booking', [BookingController::class, 'index']);
 Route::post('/booking', [BookingController::class, 'store']);
 Route::get('/booking/{id}', [BookingController::class, 'show']);
-Route::get('/booking_reservation', [BookingController::class, 'showReservation']);
 Route::patch('/booking/{id}', [BookingController::class, 'update']);
 Route::delete('/booking/{id}', [BookingController::class, 'destroy']);
+Route::post('/bookings', [BookingController::class, 'findBooking']);

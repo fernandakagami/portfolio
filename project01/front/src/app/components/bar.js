@@ -1,4 +1,7 @@
 'use client'
+
+import { useSearch } from '../../contexts/SearchContext';
+import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
@@ -6,12 +9,24 @@ import { Icon } from '@iconify/react';
 
 export default function Bar() {
   const [open, setOpen] = useState(false);
+  const { setSerch, search } = useSearch();
+  const [bookings, setBookings] = useState({});
   let [guest, setGuest] = useState(1);
   const [attributes, setAtributes] = useState({
     initial_date: new Date(),
     final_date: new Date(),
-    guests: 1
+    guests: 1,
   });
+
+  async function fetchBookings(e) {
+    e.preventDefault();
+    await axios.post("http://127.0.0.1:8000/api/bookings", attributes)
+      .then((response) => {
+        setSerch(response.data);
+      }).catch((error) => {
+        console.log(error)
+      })
+  }
 
   const [reservation, setReservation] = useState({ guest: 1 })
 
@@ -50,7 +65,7 @@ export default function Bar() {
           <div>{reservation?.guest} pessoas</div>
         </div>
         <div className="cursor-pointer relative">
-          <button className="absolute bg-[#24AB70] text-[#fff] rounded-full top-[-13px] right-[-60px]" style={{ width: "165px", height: "100px" }}>
+          <button className="absolute bg-[#24AB70] text-[#fff] rounded-full top-[-13px] right-[-60px] text-2xl" style={{ width: "165px", height: "100px" }} onClick={(e)=>fetchBookings(e)}>
             Buscar
           </button>
         </div>

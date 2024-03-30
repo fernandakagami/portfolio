@@ -15,6 +15,7 @@ export default function Create() {
   const [attributes, setAtributes] = useState({
     initial_date: new Date(),
     final_date: new Date(),
+    guests: 0,
     room_id: "",
   });
 
@@ -77,6 +78,19 @@ export default function Create() {
             }
           </div>
           {erro?.room_id && (<div className="text-red-500 text-xs">Escolha pelo menos um quarto.</div>)}
+
+          <div className='mt-5'>
+           <p className="mb-4">Quantidade de hóspedes</p>
+           <input
+                className='mb-3 block w-full appearance-none rounded border border-gray-50 bg-gray-50 px-4 py-3 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none'
+                id='grid-name'
+                type='number'
+                onChange={(e) => updateAttributes(e.target.value, 'guests')}
+                value={attributes.guests}
+              />
+              {erro.guests && (<div className="text-red-500 text-xs">{erro.guests}</div>)}
+          </div>
+
           <div className="mt-5">
             <p className="mb-4">Escolha a data para:</p>
             <div className="flex flex-row items-center justify-start px-8">

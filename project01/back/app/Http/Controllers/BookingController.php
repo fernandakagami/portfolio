@@ -26,17 +26,23 @@ class BookingController extends Controller
     $validatedData = $request->validate([
         'initial_date' => ['required'],
         'final_date' => ['required'],
+        'guests' => ['required'],
         'room_id' => ['required'],
     ]);
 
+    if ($request->input('guests') > Room::find($request->input('room_id'))->guests) {
+      return response()->json(array('status' => 422, 'guests' => 'Quantidade de hóspedes é inválida.'), 422);}
+
     if ($request->input('initial_date') < Carbon::now()) {
     return response()->json(array('status' => 422,'initial_date' => 'Data de check-in é inválida.'), 422);}
+
     if ($request->input('final_date') < $request->input('initial_date') || $request->input('final_date') < Carbon::now()) {
     return response()->json(array('status' => 422, 'final_date' => 'Data de check-out é inválida.'), 422);}
 
     $booking = new Booking;
     $booking->initial_date = Carbon::parse($request->input('initial_date'))->format('Y/m/d');
     $booking->final_date = Carbon::parse($request->input('final_date'))->format('Y/m/d');
+    $booking->guests = $request->input("guests");
     $booking->room_id = $request->input("room_id");
     $booking->save();
 
@@ -51,9 +57,13 @@ class BookingController extends Controller
       return response($booking, 200);
   }
 
-  public function showReservation(Request $request)
+  public function findBooking(Request $request)
   {
-    $booking = Booking::where('initial_date', '>=', Carbon::parse($request->input('initial_date'))->format('Y/m/d'))->where('final_date', '<=', Carbon::parse($request->input('final_date'))->format('Y/m/d'))->with('room')->get();
+    $booking = Booking::where('initial_date', '>=', Carbon::parse($request->input('initial_date'))->format('Y/m/d'))
+      ->where('final_date', '<=', Carbon::parse($request->input('final_date'))->format('Y/m/d'))
+      ->with('room')
+      ->where('guests', '=', $request->input('guests'))
+      ->get();
     return response($booking, 200);
   }
 
